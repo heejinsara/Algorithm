@@ -1,8 +1,9 @@
+from collections import deque
 def solution(priorities, location):
-    que=[(i,j) for i,j in enumerate(priorities)]
+    que=deque((i,j) for i,j in enumerate(priorities))
     answer = 0
     while True:
-        cur=que.pop(0)
+        cur=que.popleft()
         if any(cur[1]<q[1] for q in que):
             que.append(cur)
         else:
