@@ -1,10 +1,18 @@
+from collections import deque
 def solution(s):
-    cnt=0
-    for i in s:
-        if i=='(':
-            cnt+=1
-        elif i==')':
-            cnt-=1
-        if cnt<0:
+    s=deque(s)
+    if s[0]==')':
+        return False
+    result=0
+    while s:
+        temp=s.popleft()
+        if temp=='(':
+            result+=1
+        else:
+            result-=1
+        if result<0:
             return False
-    return cnt==0
+    if result==0:
+        return True
+    else:
+        return False
