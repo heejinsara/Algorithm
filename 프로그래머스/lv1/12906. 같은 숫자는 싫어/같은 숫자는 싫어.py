@@ -1,8 +1,9 @@
+from collections import deque
 def solution(arr):
-    answer=[arr[0]]
-    temp=arr[0]
-    for i in arr[1:]:
-        if i!=temp:
+    arr=deque(arr)
+    answer=[]
+    answer.append(arr.popleft())
+    for i in arr:
+        if answer[-1]!=i:
             answer.append(i)
-        temp=i
     return answer
