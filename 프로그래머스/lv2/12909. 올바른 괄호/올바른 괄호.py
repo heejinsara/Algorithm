@@ -1,18 +1,18 @@
 from collections import deque
 def solution(s):
     s=deque(s)
-    if s[0]==')':
+    temp=[s.popleft()]
+    if temp[0]==')':
         return False
-    result=0
-    while s:
-        temp=s.popleft()
-        if temp=='(':
-            result+=1
-        else:
-            result-=1
-        if result<0:
+    for i in s:
+        try:
+            if i=='(':
+                temp.append('(')
+            elif i==')':
+                temp.pop()
+        except:
             return False
-    if result==0:
+    if len(temp)==0:
         return True
     else:
         return False
