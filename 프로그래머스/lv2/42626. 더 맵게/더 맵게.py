@@ -11,4 +11,3 @@ def solution(scoville,K):
         return -1
     else:
         return answer
-    
