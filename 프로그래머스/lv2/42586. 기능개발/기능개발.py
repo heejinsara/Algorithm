@@ -1,18 +1,17 @@
-import math
-def solution(progresses,speeds):
-    result=[]
+import numpy as np
+def solution(progresses, speeds):
     answer=[]
-    for i in range(len(progresses)):
-        result.append(math.ceil((100-progresses[i])/speeds[i]))
-    print(result)
-    cnt=1
+    progresses=np.array(progresses)
+    speeds=np.array(speeds)
+    result=np.ceil((100-progresses)/speeds)
     temp=result[0]
-    for j in result[1:]:
-        if temp>=j:
-            cnt+=1
-        else:
+    cnt=1
+    for i in result[1:]:
+        if i>temp:
             answer.append(cnt)
-            temp=j
             cnt=1
+            temp=i
+        else:
+            cnt+=1
     answer.append(cnt)
     return answer
