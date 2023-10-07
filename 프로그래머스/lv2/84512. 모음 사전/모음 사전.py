@@ -5,5 +5,4 @@ def solution(word):
         for j in product('AEIOU',repeat=i):
             L.append(''.join(j))
     L.sort()
-    answer=L.index(word)+1
-    return answer
+    return L.index(word)+1
